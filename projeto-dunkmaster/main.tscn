@@ -1,21 +1,75 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjw3vf4d3lg1s"]
+[gd_scene load_steps=9 format=3 uid="uid://cjw3vf4d3lg1s"]
 
 [ext_resource type="PackedScene" uid="uid://cabjqxoe3txsn" path="res://personagem.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://basrmhrypyy0q" path="res://map/céu.png" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bm8dckbg06is" path="res://map/New Piskel (3).png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://es16pye1mw6p" path="res://map/New Piskel-2.png.png" id="2_7mycd"]
+[ext_resource type="Texture2D" uid="uid://ckddssgyjvm7a" path="res://map/New Piskel-1.png.png" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://b8gnbh3xun0hv" path="res://map/muro.png" id="3_272bh"]
+[ext_resource type="PackedScene" uid="uid://baig2y6j0wc66" path="res://bola.tscn" id="7_272bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(1152, 72)
+size = Vector2(1152, 104)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_ig7tw")]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="camada0" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada0"]
+position = Vector2(576, 240)
+scale = Vector2(18, 9.75)
+texture = ExtResource("1_lquwl")
+
+[node name="camada0_5" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada0_5"]
+position = Vector2(832, 336)
+scale = Vector2(7.75, 10)
+texture = ExtResource("2_7mycd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/camada0_5"]
+position = Vector2(248, 336)
+scale = Vector2(7.25, 10)
+texture = ExtResource("2_7mycd")
+
+[node name="camada1" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada1"]
+position = Vector2(420, 284)
+scale = Vector2(10.625, 9.875)
+texture = ExtResource("2_lquwl")
+
+[node name="camada3" type="ParallaxLayer" parent="ParallaxBackground"]
+scale = Vector2(0.99369, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada3"]
+position = Vector2(1032, 168)
+scale = Vector2(-13.2938, 9.875)
+texture = ExtResource("2_lquwl")
+
+[node name="camada2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada2"]
+position = Vector2(576, 252)
+scale = Vector2(18, 7.875)
+texture = ExtResource("3_272bh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 576)
 
-[node name="Panel" type="Panel" parent="StaticBody2D"]
-offset_right = 1152.0
-offset_bottom = 72.0
+[node name="NewPiskel(3)" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(576, -272)
+scale = Vector2(16.9412, 10.1176)
+texture = ExtResource("2_0xm2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576, 36)
+position = Vector2(576, 20)
 shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(216, 416)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(416, 408)
