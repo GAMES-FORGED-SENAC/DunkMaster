@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://baig2y6j0wc66"]
+[gd_scene load_steps=4 format=3 uid="uid://baig2y6j0wc66"]
 
 [ext_resource type="Script" uid="uid://c5vr177edawao" path="res://bola.gd" id="1_6ycda"]
 [ext_resource type="Texture2D" uid="uid://x782ontxvv1s" path="res://New Piskel (1).png" id="1_c0eli"]
@@ -6,10 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ycda"]
 radius = 24.0
 
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_ye40b"]
-length = 25.0
-
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="bola" type="RigidBody2D"]
 script = ExtResource("1_6ycda")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,10 +16,13 @@ texture = ExtResource("1_c0eli")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6ycda")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="RayCastesquerda" type="RayCast2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+target_position = Vector2(-26, 0)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("SeparationRayShape2D_ye40b")
-debug_color = Color(0.954585, 2.79158e-06, 0.547659, 0.42)
+[node name="RayCastdireita" type="RayCast2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+target_position = Vector2(26, 0)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="RayCastbaixo" type="RayCast2D" parent="."]
+target_position = Vector2(0, 25)
