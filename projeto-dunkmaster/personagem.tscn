@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cabjqxoe3txsn"]
+[gd_scene load_steps=34 format=3 uid="uid://cabjqxoe3txsn"]
 
 [ext_resource type="Script" uid="uid://cufjswk4rqwyx" path="res://character_body_2d.gd" id="1_vvf27"]
 [ext_resource type="Texture2D" uid="uid://d1ch2q5vjspn7" path="res://The_Dude_Free/Idle.png" id="2_s3elh"]
@@ -204,14 +204,12 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_114o1"]
-size = Vector2(56, 136)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn376"]
-size = Vector2(42, 82)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_114o1"]
+radius = 29.0
+height = 132.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7k75"]
-size = Vector2(42, 82.5)
+size = Vector2(48, 96)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_vvf27")
@@ -219,24 +217,17 @@ script = ExtResource("1_vvf27")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_s3elh")
-animation = &"jump"
 autoplay = "default"
-frame = 4
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_114o1")
+position = Vector2(-1, 7)
+shape = SubResource("CapsuleShape2D_114o1")
 
-[node name="esquerda" type="Area2D" parent="."]
+[node name="frente" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="esquerda"]
-position = Vector2(-49, 27)
-shape = SubResource("RectangleShape2D_gn376")
-debug_color = Color(0.957478, 0, 0.532356, 0.42)
-
-[node name="direita" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="direita"]
-position = Vector2(49, 27)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="frente"]
+position = Vector2(48, 16)
 shape = SubResource("RectangleShape2D_p7k75")
 debug_color = Color(0.940373, 8.66354e-06, 0.615292, 0.42)
+
+[connection signal="body_entered" from="frente" to="." method="_on_frente_body_entered"]
