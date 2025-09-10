@@ -1,38 +1,41 @@
 extends CharacterBody2D
 
+# === NÓS ===
 @onready var personagem = $"."
 @onready var animacoes = $AnimatedSprite2D
 
+# === CONSTANTES ===
 const SPEED = 300.0
 const JUMP_VELOCITY = -600
 
-var offset_x = 0
+# === VARIÁVEIS ===
 var is_jumping = false
-var bola_colidida: Node2D = null
+var bola_colidida: RigidBody2D = null
 var segurando_bola = false
 
+# === PROCESSO PRINCIPAL ===
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 1.5
 
 	movimentar_vertical()
 	movimentar_horizontal()
-	Mudar_animacoes()
+	mudar_animacoes()
 	move_and_slide()
 
 	# Pegar bola
-	if bola_colidida and Input.is_action_just_pressed("driblaEpega"):
-		segurando_bola = true
+	if Input.is_action_just_pressed("driblaEpega"):
+		pegar_bola()
+
+	# Jogar/soltar bola
+	if Input.is_action_just_pressed("jogaEpega"):
+		jogar_bola()
 
 	# Atualizar posição da bola se estiver segurando
 	if segurando_bola and bola_colidida:
-		var offset_x = 50
-		if animacoes.flip_h:
-			offset_x = -50
+		atualizar_posicao_bola()
 
-		var offset = Vector2(offset_x, 0)
-		bola_colidida.global_position = personagem.global_position + offset
-
+# === MOVIMENTAÇÃO ===
 func movimentar_vertical():
 	if is_jumping and is_on_floor():
 		is_jumping = false
@@ -49,13 +52,46 @@ func movimentar_horizontal():
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-func Mudar_animacoes():
+# === ANIMAÇÕES ===
+func mudar_animacoes():
 	if not is_jumping:
 		if velocity.x == 0:
 			animacoes.play("default")
 		else:
 			animacoes.play("run")
 
+# === COLISÃO COM A BOLA ===
 func _on_frente_body_entered(body: Node2D) -> void:
-	if body.is_in_group("bola"):
+	if body.is_in_group("bola") and body is RigidBody2D:
 		bola_colidida = body
+
+# === PEGAR BOLA ===
+func pegar_bola():
+	if bola_colidida:
+		segurando_bola = true
+		bola_colidida.freeze = true  # Congela física enquanto segura
+
+# === ATUALIZA POSIÇÃO DA BOLA JUNTO AO PERSONAGEM ===
+func atualizar_posicao_bola():
+	var offset_x = 60
+	if animacoes.flip_h:
+		offset_x = -60
+	var offset = Vector2(offset_x, 0)
+	bola_colidida.global_position = personagem.global_position + offset
+
+# === JOGAR / SOLTAR BOLA ===
+func jogar_bola():
+	if segurando_bola and bola_colidida:
+		segurando_bola = false
+		bola_colidida.freeze = false  # Descongela física
+		bola_colidida.linear_velocity = Vector2.ZERO  # Zera a velocidade atual
+
+		# Define a força do arremesso
+		var direcao = animacoes.flip_h if animacoes else false
+		var forca = Vector2(600, -200)  # Ajuste conforme necessário
+
+		if direcao:
+			forca.x *= -1
+
+		# Aplica o impulso à bola
+		bola_colidida.apply_central_impulse(forca)
