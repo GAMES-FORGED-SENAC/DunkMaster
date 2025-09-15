@@ -3,6 +3,7 @@ extends CharacterBody2D
 # === NÓS ===
 @onready var personagem = $"."
 @onready var animacoes = $AnimatedSprite2D
+@onready var area_colision = $frente/CollisionShape2D
 
 # === CONSTANTES ===
 const SPEED = 300.0
@@ -23,13 +24,12 @@ func _physics_process(delta: float) -> void:
 	mudar_animacoes()
 	move_and_slide()
 
-	# Pegar bola
-	if Input.is_action_just_pressed("driblaEpega"):
-		pegar_bola()
-
-	# Jogar/soltar bola
+	# Um único comando para pegar ou jogar a bola
 	if Input.is_action_just_pressed("jogaEpega"):
-		jogar_bola()
+		if segurando_bola:
+			jogar_bola()
+		else:
+			pegar_bola()
 
 	# Atualizar posição da bola se estiver segurando
 	if segurando_bola and bola_colidida:
@@ -49,6 +49,11 @@ func movimentar_horizontal():
 	if direction:
 		velocity.x = direction * SPEED
 		animacoes.flip_h = direction < 0
+		if direction == -1:
+			area_colision.position.x = -48
+		elif direction == 1:
+			area_colision.position.x = 48
+			
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -64,6 +69,11 @@ func mudar_animacoes():
 func _on_frente_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bola") and body is RigidBody2D:
 		bola_colidida = body
+
+func _on_frente_body_exited(body: Node2D) -> void:
+	if body == bola_colidida:
+		bola_colidida = null
+
 
 # === PEGAR BOLA ===
 func pegar_bola():
