@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://5cy7t4pus5e5"]
+
+[ext_resource type="Script" uid="uid://bias4a617ups7" path="res://credits1.gd" id="1_nm7lk"]
+
+[node name="credits" type="Node2D"]
+script = ExtResource("1_nm7lk")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 128.0
+offset_right = 680.0
+offset_bottom = 287.0
+text = "creditos
+"
+
+[node name="voltar2" type="Button" parent="."]
+offset_left = 320.0
+offset_top = 184.0
+offset_right = 392.0
+offset_bottom = 216.0
+text = "voltar
+"
+
+[connection signal="pressed" from="voltar2" to="." method="credits_on_button_pressed"]

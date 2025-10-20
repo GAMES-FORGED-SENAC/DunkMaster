@@ -1,5 +1,65 @@
-[gd_scene format=3 uid="uid://defj6k4q4jbeo"]
+[gd_scene load_steps=5 format=3 uid="uid://defj6k4q4jbeo"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="FontFile" uid="uid://l16qg3wpjgw1" path="res://map/upheavtt.ttf" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://dibjhv7bxximq" path="res://menu.gd" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://clwh7vt8xdrvm" path="res://Captura de Tela 2025-10-20 às 10.38.11.png" id="2_mae5d"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mae5d"]
+bg_color = Color(0.655816, 0.0583821, 0, 1)
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_ouk20")
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+offset_left = -368.0
+offset_top = -328.0
+offset_right = 2256.0
+offset_bottom = 1208.0
+scale = Vector2(0.75, 0.703125)
+texture = ExtResource("2_mae5d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+modulate = Color(0.648969, 0.219718, 0, 1)
+offset_left = 34.0
+offset_top = 77.0
+offset_right = 434.0
+offset_bottom = 370.0
+theme_override_constants/separation = 16
+
+[node name="titulo" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 58
+text = "dunk master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_mae5d")
+text = "start"
+
+[node name="options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 40
+text = "options"
+
+[node name="credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 40
+text = "credits"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 40
+text = "quit"
+
+[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options1_pressed"]
+[connection signal="pressed" from="VBoxContainer/credits" to="." method="_on_credits1_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
