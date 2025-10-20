@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://defj6k4q4jbeo"]
+[gd_scene load_steps=6 format=3 uid="uid://defj6k4q4jbeo"]
 
 [ext_resource type="FontFile" uid="uid://l16qg3wpjgw1" path="res://map/upheavtt.ttf" id="1_lti8b"]
 [ext_resource type="Script" uid="uid://dibjhv7bxximq" path="res://menu.gd" id="1_ouk20"]
 [ext_resource type="Texture2D" uid="uid://clwh7vt8xdrvm" path="res://Captura de Tela 2025-10-20 às 10.38.11.png" id="2_mae5d"]
+[ext_resource type="PackedScene" uid="uid://baig2y6j0wc66" path="res://bola.tscn" id="4_4hy44"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mae5d"]
 bg_color = Color(0.655816, 0.0583821, 0, 1)
@@ -58,6 +59,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 40
 text = "quit"
+
+[node name="bola" parent="." instance=ExtResource("4_4hy44")]
+position = Vector2(584, 368)
+scale = Vector2(1.3271, 1.23009)
 
 [connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options1_pressed"]
