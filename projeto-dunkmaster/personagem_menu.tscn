@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://choyq0tqrcyii"]
+
+[ext_resource type="Texture2D" uid="uid://d1ch2q5vjspn7" path="res://The_Dude_Free/Idle.png" id="1_5xpc5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ucm6"]
+atlas = ExtResource("1_5xpc5")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62rjl"]
+atlas = ExtResource("1_5xpc5")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_374yd"]
+atlas = ExtResource("1_5xpc5")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryt82"]
+atlas = ExtResource("1_5xpc5")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nws6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ucm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62rjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_374yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryt82")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nws6h")
+autoplay = "default"
+frame_progress = 0.241318
+flip_h = true
