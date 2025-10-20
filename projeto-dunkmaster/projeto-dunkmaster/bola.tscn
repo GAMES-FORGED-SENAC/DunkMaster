@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://baig2y6j0wc66"]
+
+[ext_resource type="Script" uid="uid://c5vr177edawao" path="res://bola.gd" id="1_6ycda"]
+[ext_resource type="Texture2D" uid="uid://x782ontxvv1s" path="res://New Piskel (1).png" id="1_c0eli"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ycda"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ye40b"]
+radius = 25.0799
+
+[node name="bola" type="RigidBody2D" groups=["bola"]]
+script = ExtResource("1_6ycda")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_c0eli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6ycda")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ye40b")
+debug_color = Color(0.973459, 0, 0.433837, 0.42)

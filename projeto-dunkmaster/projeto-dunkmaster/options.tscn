@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmqjhv1bnvymn"]
+
+[ext_resource type="Script" uid="uid://bkneq8xfhtilf" path="res://options1.gd" id="1_5v8ap"]
+
+[node name="options" type="Node2D"]
+script = ExtResource("1_5v8ap")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 232.0
+offset_top = 128.0
+offset_right = 568.0
+offset_bottom = 376.0
+text = "omg
+"
+
+[node name="voltar1" type="Button" parent="."]
+offset_left = 216.0
+offset_top = 200.0
+offset_right = 328.0
+offset_bottom = 232.0
+text = "voltar"
+
+[connection signal="pressed" from="voltar1" to="." method="options_on_button_pressed"]
