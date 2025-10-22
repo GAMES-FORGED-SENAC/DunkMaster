@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d3bhp5vlj0xkx"
+path="res://.godot/imported/ENCONTRADA Música do Onibus Todo mundo odeia o Chris.. [KqwNp98v0gc].mp3-436dbb5920424003169d21739fa5dee2.mp3str"
+
+[deps]
+
+source_file="res://ENCONTRADA Música do Onibus Todo mundo odeia o Chris.. [KqwNp98v0gc].mp3"
+dest_files=["res://.godot/imported/ENCONTRADA Música do Onibus Todo mundo odeia o Chris.. [KqwNp98v0gc].mp3-436dbb5920424003169d21739fa5dee2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjw3vf4d3lg1s"]
+[gd_scene load_steps=15 format=3 uid="uid://cjw3vf4d3lg1s"]
 
+[ext_resource type="Script" uid="uid://cucpsqkicsg7h" path="res://pontos.gd" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cabjqxoe3txsn" path="res://personagem.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://basrmhrypyy0q" path="res://map/céu.png" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bm8dckbg06is" path="res://map/New Piskel (3).png" id="2_0xm2m"]
@@ -7,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://ckddssgyjvm7a" path="res://map/New Piskel-1.png.png" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://b8gnbh3xun0hv" path="res://map/muro.png" id="3_272bh"]
 [ext_resource type="PackedScene" uid="uid://baig2y6j0wc66" path="res://bola.tscn" id="7_272bh"]
+[ext_resource type="FontFile" uid="uid://bejay4b5kdhbq" path="res://upheavtt.ttf" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cvotf01nrp1wf" path="res://cesta.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://baobfb2enrxh4" path="res://base_cesta.tscn" id="10_efxa6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
 size = Vector2(75, 720)
@@ -18,6 +22,7 @@ size = Vector2(1152, 104)
 size = Vector2(1296, 101)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_4c57u")
 
 [node name="paredes" type="StaticBody2D" parent="." groups=["parede"]]
 position = Vector2(0, 576)
@@ -89,11 +94,56 @@ shape = SubResource("RectangleShape2D_0xm2m")
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(216, 416)
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("7_272bh")]
-position = Vector2(416, 408)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(576, -122.5)
 shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 448.0
+offset_top = 24.0
+offset_right = 704.0
+offset_bottom = 104.0
+grow_horizontal = 2
+
+[node name="pontos_j1" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_right = 74.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("8_5vw27")
+theme_override_font_sizes/font_size = 70
+text = "0"
+horizontal_alignment = 1
+
+[node name="pontos_j2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 184.0
+offset_right = 226.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("8_5vw27")
+theme_override_font_sizes/font_size = 70
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = -16.0
+offset_right = 152.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 66
+text = "|"
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("10_efxa6")]
+position = Vector2(76, 231)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(416, 408)
+
+[node name="cesta" parent="." instance=ExtResource("9_kek77")]
+position = Vector2(128, 248)

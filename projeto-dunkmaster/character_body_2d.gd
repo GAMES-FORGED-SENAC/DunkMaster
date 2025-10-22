@@ -23,39 +23,27 @@ func _physics_process(delta: float) -> void:
 	movimentar_horizontal()
 	mudar_animacoes()
 	move_and_slide()
+	acao_bola()
 
-	# Um único comando para pegar ou jogar a bola
-	if Input.is_action_just_pressed("jogaEpega"):
-		if segurando_bola:
-			jogar_bola()
-		else:
-			pegar_bola()
-
-	# Atualizar posição da bola se estiver segurando
-	if segurando_bola and bola_colidida:
-		atualizar_posicao_bola()
 
 # === MOVIMENTAÇÃO ===
 func movimentar_vertical():
 	if is_jumping and is_on_floor():
 		is_jumping = false
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("pula_J1") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		is_jumping = true
 		animacoes.play("jump")
 
 func movimentar_horizontal():
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("esquerda_J1", "direita_J1")
 	if direction:
 		velocity.x = direction * SPEED
 		animacoes.flip_h = direction < 0
-		if direction == -1:
-			area_colision.position.x = -48
-		elif direction == 1:
-			area_colision.position.x = 48
-			
+		area_colision.position.x = 48 * direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+
 
 # === ANIMAÇÕES ===
 func mudar_animacoes():
@@ -65,6 +53,72 @@ func mudar_animacoes():
 		else:
 			animacoes.play("run")
 
+
+# === AÇÕES COM A BOLA ===
+func acao_bola():
+	if Input.is_action_just_pressed("pega"):
+		if segurando_bola:
+			soltar_bola()  # solta sem impulso
+		else:
+			pegar_bola()
+
+	if Input.is_action_just_pressed("joga"):
+		if segurando_bola:
+			tacar_bola()
+
+	if segurando_bola and bola_colidida:
+		atualizar_posicao_bola()
+
+
+# === PEGAR BOLA ===
+func pegar_bola():
+	if bola_colidida:
+		segurando_bola = true
+		bola_colidida.freeze = true
+		bola_colidida.linear_velocity = Vector2.ZERO
+		bola_colidida.angular_velocity = 0
+
+
+# === SOLTAR BOLA (sem impulso) ===
+func soltar_bola():
+	if segurando_bola and bola_colidida:
+		segurando_bola = false
+		bola_colidida.freeze = false
+		bola_colidida.sleeping = false
+		bola_colidida.linear_velocity = Vector2.ZERO
+
+
+# === TACAR BOLA (com impulso) ===
+func tacar_bola():
+	if segurando_bola and bola_colidida:
+		segurando_bola = false
+
+		# Descongela e acorda o corpo antes do impulso
+		bola_colidida.freeze = false
+		bola_colidida.sleeping = false
+		bola_colidida.linear_velocity = Vector2.ZERO
+		bola_colidida.angular_velocity = 0
+
+		# Direção baseada no flip do personagem
+		var direcao_x = -1 if animacoes.flip_h else 1
+
+		# Força de arremesso (ajustável)
+		var forca = Vector2(500 * direcao_x, -600)
+
+		# Aplica o impulso central
+		bola_colidida.apply_central_impulse(forca)
+
+		# (Opcional) se quiser garantir o impulso mesmo em corpos leves:
+		# bola_colidida.add_force(Vector2.ZERO, forca)
+
+
+# === ATUALIZA POSIÇÃO DA BOLA ===
+func atualizar_posicao_bola():
+	var offset_x = 60 if not animacoes.flip_h else -60
+	var offset = Vector2(offset_x, -10)
+	bola_colidida.global_position = personagem.global_position + offset
+
+
 # === COLISÃO COM A BOLA ===
 func _on_frente_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bola") and body is RigidBody2D:
@@ -73,35 +127,3 @@ func _on_frente_body_entered(body: Node2D) -> void:
 func _on_frente_body_exited(body: Node2D) -> void:
 	if body == bola_colidida:
 		bola_colidida = null
-
-
-# === PEGAR BOLA ===
-func pegar_bola():
-	if bola_colidida:
-		segurando_bola = true
-		bola_colidida.freeze = true  # Congela física enquanto segura
-
-# === ATUALIZA POSIÇÃO DA BOLA JUNTO AO PERSONAGEM ===
-func atualizar_posicao_bola():
-	var offset_x = 60
-	if animacoes.flip_h:
-		offset_x = -60
-	var offset = Vector2(offset_x, 0)
-	bola_colidida.global_position = personagem.global_position + offset
-
-# === JOGAR / SOLTAR BOLA ===
-func jogar_bola():
-	if segurando_bola and bola_colidida:
-		segurando_bola = false
-		bola_colidida.freeze = false  # Descongela física
-		bola_colidida.linear_velocity = Vector2.ZERO  # Zera a velocidade atual
-
-		# Define a força do arremesso
-		var direcao = animacoes.flip_h if animacoes else false
-		var forca = Vector2(600, -200)  # Ajuste conforme necessário
-
-		if direcao:
-			forca.x *= -1
-
-		# Aplica o impulso à bola
-		bola_colidida.apply_central_impulse(forca)

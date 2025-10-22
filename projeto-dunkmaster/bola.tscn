@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://baig2y6j0wc66"]
+[gd_scene load_steps=6 format=3 uid="uid://baig2y6j0wc66"]
 
 [ext_resource type="Script" uid="uid://c5vr177edawao" path="res://bola.gd" id="1_6ycda"]
 [ext_resource type="Texture2D" uid="uid://x782ontxvv1s" path="res://New Piskel (1).png" id="1_c0eli"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ycda"]
+friction = 0.5
+bounce = 0.9
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ycda"]
 radius = 24.0
@@ -10,6 +14,8 @@ radius = 24.0
 radius = 25.0799
 
 [node name="bola" type="RigidBody2D" groups=["bola"]]
+physics_material_override = SubResource("PhysicsMaterial_6ycda")
+angular_damp = 0.1
 script = ExtResource("1_6ycda")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

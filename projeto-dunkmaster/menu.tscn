@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://defj6k4q4jbeo"]
+[gd_scene load_steps=9 format=3 uid="uid://defj6k4q4jbeo"]
 
 [ext_resource type="FontFile" uid="uid://l16qg3wpjgw1" path="res://map/upheavtt.ttf" id="1_lti8b"]
 [ext_resource type="Script" uid="uid://dibjhv7bxximq" path="res://menu.gd" id="1_ouk20"]
 [ext_resource type="Texture2D" uid="uid://bqb8tuxp28oru" path="res://Captura de Tela 2025-10-20 às 11.41.46.png" id="2_4hy44"]
 [ext_resource type="PackedScene" uid="uid://bn1vuhlw24e6s" path="res://bola_menu.tscn" id="4_4hy44"]
 [ext_resource type="PackedScene" uid="uid://choyq0tqrcyii" path="res://personagem_menu.tscn" id="5_ytr4m"]
+[ext_resource type="AudioStream" uid="uid://d3bhp5vlj0xkx" path="res://ENCONTRADA Música do Onibus Todo mundo odeia o Chris.. [KqwNp98v0gc].mp3" id="6_l48gv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mae5d"]
 bg_color = Color(0.655816, 0.0583821, 0, 1)
@@ -16,19 +17,19 @@ size = Vector2(1186, 106)
 script = ExtResource("1_ouk20")
 
 [node name="Sprite2D" type="TextureRect" parent="."]
-offset_left = -456.0
-offset_top = -400.0
-offset_right = 2168.0
-offset_bottom = 1136.0
+offset_left = -176.0
+offset_top = -112.0
+offset_right = 2075.0
+offset_bottom = 1049.0
 scale = Vector2(0.75, 0.703125)
 texture = ExtResource("2_4hy44")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 modulate = Color(0.648969, 0.219718, 0, 1)
-offset_left = 32.0
-offset_top = 8.0
-offset_right = 432.0
-offset_bottom = 301.0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 416.0
+offset_bottom = 325.0
 theme_override_constants/separation = 16
 
 [node name="titulo" type="Label" parent="VBoxContainer"]
@@ -76,6 +77,12 @@ scale = Vector2(5, 5)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("4_4hy44")]
 position = Vector2(808, 408)
+
+[node name="EncontradaMúsicaDoOnibusTodoMundoOdeiaOChris__[kqwNp98v0Gc]" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(560, 544)
+stream = ExtResource("6_l48gv")
+autoplay = true
+parameters/looping = false
 
 [connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options1_pressed"]
