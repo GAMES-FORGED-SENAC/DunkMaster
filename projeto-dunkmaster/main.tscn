@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjw3vf4d3lg1s"]
+[gd_scene load_steps=16 format=3 uid="uid://cjw3vf4d3lg1s"]
 
 [ext_resource type="Script" uid="uid://cucpsqkicsg7h" path="res://pontos.gd" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cabjqxoe3txsn" path="res://personagem.tscn" id="1_ig7tw"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://bejay4b5kdhbq" path="res://upheavtt.ttf" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://cvotf01nrp1wf" path="res://cesta.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://baobfb2enrxh4" path="res://base_cesta.tscn" id="10_efxa6"]
+[ext_resource type="Script" uid="uid://dknujk07g8r4w" path="res://pause.gd" id="12_dg77c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
 size = Vector2(75, 720)
@@ -147,3 +148,34 @@ position = Vector2(416, 408)
 
 [node name="cesta" parent="." instance=ExtResource("9_kek77")]
 position = Vector2(128, 248)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("12_dg77c")
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 320.0
+offset_top = 160.0
+offset_right = 832.0
+offset_bottom = 392.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 503.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("8_5vw27")
+theme_override_font_sizes/font_size = 48
+text = "Você pausou o jogo!"
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 152.0
+offset_right = 80.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("8_5vw27")
+theme_override_font_sizes/font_size = 18
+text = "VOLTAR"
+
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_on_button_pressed"]
