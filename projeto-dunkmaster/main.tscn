@@ -11,16 +11,16 @@
 [ext_resource type="FontFile" uid="uid://bejay4b5kdhbq" path="res://upheavtt.ttf" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://cvotf01nrp1wf" path="res://cesta.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://baobfb2enrxh4" path="res://base_cesta.tscn" id="10_efxa6"]
-[ext_resource type="Script" uid="uid://dknujk07g8r4w" path="res://pause.gd" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://d4lb8ysoafqml" path="res://nao_sei.tscn" id="12_dg77c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
-size = Vector2(75, 720)
+size = Vector2(75, 1190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(1152, 104)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
-size = Vector2(1296, 101)
+size = Vector2(1296, 48)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_4c57u")
@@ -29,11 +29,11 @@ script = ExtResource("1_4c57u")
 position = Vector2(0, 576)
 
 [node name="parede" type="CollisionShape2D" parent="paredes"]
-position = Vector2(-37.5, -288)
+position = Vector2(-37.5, -405)
 shape = SubResource("RectangleShape2D_272bh")
 
 [node name="parede2" type="CollisionShape2D" parent="paredes"]
-position = Vector2(1187, -288)
+position = Vector2(1187, -406)
 shape = SubResource("RectangleShape2D_272bh")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -98,7 +98,7 @@ position = Vector2(216, 416)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576, -122.5)
+position = Vector2(576, -448)
 shape = SubResource("RectangleShape2D_5vw27")
 
 [node name="Panel" type="Panel" parent="."]
@@ -141,41 +141,13 @@ theme_override_font_sizes/font_size = 66
 text = "|"
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("10_efxa6")]
-position = Vector2(76, 231)
+position = Vector2(1076, 220)
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("7_272bh")]
 position = Vector2(416, 408)
 
+[node name="CanvasLayer" parent="." instance=ExtResource("12_dg77c")]
+visible = false
+
 [node name="cesta" parent="." instance=ExtResource("9_kek77")]
-position = Vector2(128, 248)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("12_dg77c")
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 320.0
-offset_top = 160.0
-offset_right = 832.0
-offset_bottom = 392.0
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 503.0
-offset_bottom = 52.0
-theme_override_fonts/font = ExtResource("8_5vw27")
-theme_override_font_sizes/font_size = 48
-text = "Você pausou o jogo!"
-
-[node name="Button" type="Button" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 152.0
-offset_right = 80.0
-offset_bottom = 200.0
-theme_override_fonts/font = ExtResource("8_5vw27")
-theme_override_font_sizes/font_size = 18
-text = "VOLTAR"
-
-[connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_on_button_pressed"]
+position = Vector2(1028, 232)
