@@ -30,13 +30,13 @@ func _physics_process(delta: float) -> void:
 func movimentar_vertical():
 	if is_jumping and is_on_floor():
 		is_jumping = false
-	if Input.is_action_just_pressed("pulaP1") and is_on_floor():
+	if Input.is_action_just_pressed("pulaP2") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		is_jumping = true
 		animacoes.play("jump")
 
 func movimentar_horizontal():
-	var direction := Input.get_axis("esquerdaP1", "direitaP1")
+	var direction := Input.get_axis("esquerdaP2", "direitaP2")
 	if direction:
 		velocity.x = direction * SPEED
 		animacoes.flip_h = direction < 0
@@ -56,13 +56,13 @@ func mudar_animacoes():
 
 # === AÇÕES COM A BOLA ===
 func acao_bola():
-	if Input.is_action_just_pressed("pegaP1"):
+	if Input.is_action_just_pressed("pegaP2"):
 		if segurando_bola:
 			soltar_bola()  # solta sem impulso
 		else:
 			pegar_bola()
 
-	if Input.is_action_just_pressed("jogaP1"):
+	if Input.is_action_just_pressed("jogaP2"):
 		if segurando_bola:
 			tacar_bola()
 
@@ -70,6 +70,7 @@ func acao_bola():
 		atualizar_posicao_bola()
 
 
+# === PEGAR BOLA ===
 # === PEGAR BOLA ===
 func pegar_bola():
 	if bola_colidida and (Global.dono_bola == null or Global.dono_bola == self):
@@ -79,7 +80,7 @@ func pegar_bola():
 		bola_colidida.linear_velocity = Vector2.ZERO
 		bola_colidida.angular_velocity = 0
 
-
+# === SOLTAR BOLA (sem impulso) ===
 func soltar_bola():
 	if segurando_bola and bola_colidida:
 		segurando_bola = false
@@ -87,7 +88,6 @@ func soltar_bola():
 		bola_colidida.freeze = false
 		bola_colidida.sleeping = false
 		bola_colidida.linear_velocity = Vector2.ZERO
-
 
 
 # === TACAR BOLA (com impulso) ===

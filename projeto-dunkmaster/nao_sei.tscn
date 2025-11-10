@@ -41,3 +41,6 @@ offset_bottom = 357.0
 theme_override_fonts/font = ExtResource("2_3ni56")
 theme_override_font_sizes/font_size = 32
 text = " Voltar "
+
+[connection signal="pressed" from="Button" to="." method="_on_buttonMENU_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_buttonVOLTAR_pressed"]

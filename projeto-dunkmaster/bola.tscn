@@ -14,6 +14,8 @@ radius = 24.0
 radius = 25.0799
 
 [node name="bola" type="RigidBody2D" groups=["bola"]]
+collision_layer = 7
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_6ycda")
 angular_damp = 0.1
 script = ExtResource("1_6ycda")

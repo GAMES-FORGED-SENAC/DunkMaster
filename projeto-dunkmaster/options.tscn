@@ -18,10 +18,32 @@ texture = ExtResource("2_se8ut")
 flip_h = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = 408.0
+offset_left = 464.0
 offset_top = 88.0
-offset_right = 744.0
-offset_bottom = 111.0
+offset_right = 674.0
+offset_bottom = 245.0
+theme_override_fonts/font = ExtResource("3_ao2gm")
+theme_override_font_sizes/font_size = 32
+text = "Player 1 
+
+Move: A W S D
+Throw: Q
+Get: E"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 456.0
+offset_top = 256.0
+offset_right = 692.0
+offset_bottom = 422.0
+theme_override_fonts/font = ExtResource("3_ao2gm")
+theme_override_font_sizes/font_size = 32
+text = "Player 2
+
+Move: ← ↑ ↓ →
+Throw: L
+Get: K"
+horizontal_alignment = 1
 
 [node name="voltar1" type="Button" parent="."]
 offset_left = 24.0

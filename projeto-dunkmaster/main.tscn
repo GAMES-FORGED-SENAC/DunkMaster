@@ -9,32 +9,21 @@
 [ext_resource type="Texture2D" uid="uid://b8gnbh3xun0hv" path="res://map/muro.png" id="3_272bh"]
 [ext_resource type="PackedScene" uid="uid://baig2y6j0wc66" path="res://bola.tscn" id="7_272bh"]
 [ext_resource type="FontFile" uid="uid://bejay4b5kdhbq" path="res://upheavtt.ttf" id="8_5vw27"]
-[ext_resource type="PackedScene" uid="uid://cvotf01nrp1wf" path="res://cesta.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://baobfb2enrxh4" path="res://base_cesta.tscn" id="10_efxa6"]
 [ext_resource type="PackedScene" uid="uid://d4lb8ysoafqml" path="res://nao_sei.tscn" id="12_dg77c"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
-size = Vector2(75, 1190)
+[ext_resource type="PackedScene" uid="uid://832h5i011yok" path="res://personagem2.tscn" id="12_ycdy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(1152, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
+size = Vector2(75, 1190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
 size = Vector2(1296, 48)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_4c57u")
-
-[node name="paredes" type="StaticBody2D" parent="." groups=["parede"]]
-position = Vector2(0, 576)
-
-[node name="parede" type="CollisionShape2D" parent="paredes"]
-position = Vector2(-37.5, -405)
-shape = SubResource("RectangleShape2D_272bh")
-
-[node name="parede2" type="CollisionShape2D" parent="paredes"]
-position = Vector2(1187, -406)
-shape = SubResource("RectangleShape2D_272bh")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -82,6 +71,8 @@ texture = ExtResource("3_272bh")
 
 [node name="chao" type="StaticBody2D" parent="." groups=["chao"]]
 position = Vector2(0, 576)
+collision_layer = 7
+collision_mask = 7
 
 [node name="NewPiskel(3)" type="Sprite2D" parent="chao"]
 position = Vector2(576, -272)
@@ -92,14 +83,38 @@ texture = ExtResource("2_0xm2m")
 position = Vector2(576, 20)
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="player1" parent="Node2D" instance=ExtResource("1_ig7tw")]
 position = Vector2(216, 416)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="player2" parent="Node2D" instance=ExtResource("12_ycdy4")]
+position = Vector2(945, 405)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576, -448)
+[node name="paredes" type="StaticBody2D" parent="." groups=["parede"]]
+position = Vector2(0, 576)
+collision_layer = 7
+collision_mask = 7
+
+[node name="parede" type="CollisionShape2D" parent="paredes"]
+position = Vector2(-37.5, -405)
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="parede2" type="CollisionShape2D" parent="paredes"]
+position = Vector2(1192, -407)
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="teto" type="CollisionShape2D" parent="paredes"]
+position = Vector2(576, -1024)
 shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="cesta1" parent="." instance=ExtResource("10_efxa6")]
+position = Vector2(1076, 220)
+
+[node name="cesta2" parent="." instance=ExtResource("10_efxa6")]
+position = Vector2(76, 222)
+rotation = 3.14159
+scale = Vector2(1.2, -1.2)
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 5
@@ -140,14 +155,64 @@ offset_bottom = 75.0
 theme_override_font_sizes/font_size = 66
 text = "|"
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("10_efxa6")]
-position = Vector2(1076, 220)
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="Panel/Panel"]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="LabelCronometro" type="Label" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -17.0
+offset_right = 37.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_5vw27")
+theme_override_font_sizes/font_size = 37
+text = "00.0"
+
+[node name="Mensagens" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = 132.0
+offset_right = 299.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_5vw27")
+theme_override_font_sizes/font_size = 60
+text = "O jogador 1 ganhou!"
+
+[node name="TimerPontoEFinal" type="Timer" parent="Panel/Mensagens"]
+wait_time = 3.0
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("7_272bh")]
 position = Vector2(416, 408)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("12_dg77c")]
 visible = false
-
-[node name="cesta" parent="." instance=ExtResource("9_kek77")]
-position = Vector2(1028, 232)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvotf01nrp1wf"]
 
 [ext_resource type="Texture2D" uid="uid://cbnkmu1ot8cdv" path="res://map/New Piskel-2.png (1).png" id="1_8vklj"]
-[ext_resource type="Script" uid="uid://bmj0iq6wumqgb" path="res://cesta.gd" id="1_nu6ic"]
+[ext_resource type="Script" uid="uid://bmj0iq6wumqgb" path="res://cesta1.gd" id="1_nu6ic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vklj"]
 size = Vector2(1.2, 8)
@@ -13,7 +13,8 @@ size = Vector2(1.3, 8)
 size = Vector2(67, 15)
 
 [node name="cesta" type="StaticBody2D"]
-scale = Vector2(1.2, 1.2)
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_nu6ic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

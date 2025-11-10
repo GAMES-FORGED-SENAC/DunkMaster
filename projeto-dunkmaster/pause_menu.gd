@@ -18,3 +18,16 @@ func _process(delta: float) -> void:
 			get_tree().paused = false
 			esta_pausado = false
 			painel_pause.visible = false
+			
+
+func _on_buttonMENU_pressed() -> void:
+	get_tree().paused = false
+	esta_pausado = false
+	painel_pause.visible = false
+	get_tree().change_scene_to_file("res://menu.tscn")
+			
+
+func _on_buttonVOLTAR_pressed() -> void:
+	get_tree().paused = false
+	esta_pausado = false
+	painel_pause.visible = false
