@@ -1,10 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://cabjqxoe3txsn"]
+[gd_scene format=3 uid="uid://cabjqxoe3txsn"]
 
 [ext_resource type="Script" uid="uid://cufjswk4rqwyx" path="res://character_body_2d.gd" id="1_vvf27"]
 [ext_resource type="Texture2D" uid="uid://d1ch2q5vjspn7" path="res://The_Dude_Free/Idle.png" id="2_s3elh"]
 [ext_resource type="Texture2D" uid="uid://cdme13fbkr7oj" path="res://The_Dude_Free/Walk.png" id="3_114o1"]
 [ext_resource type="Texture2D" uid="uid://du8m3dh8t3amt" path="res://The_Dude_Free/Jump.png" id="3_gn376"]
 [ext_resource type="Texture2D" uid="uid://bucdlh0u22xo0" path="res://The_Dude_Free/Sprint.png" id="4_gn376"]
+[ext_resource type="FontFile" uid="uid://bejay4b5kdhbq" path="res://upheavtt.ttf" id="6_gn376"]
+[ext_resource type="AudioStream" uid="uid://cypxn40cpflca" path="res://bone-crack.mp3" id="7_p7k75"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7k75"]
 atlas = ExtResource("2_s3elh")
@@ -211,26 +213,54 @@ height = 132.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7k75"]
 size = Vector2(48, 96)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_114o1"]
+radius = 24.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2067142879]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_vvf27")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=471775632]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_s3elh")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=433822603]
 position = Vector2(-1, 7)
 shape = SubResource("CapsuleShape2D_114o1")
 
-[node name="frente" type="Area2D" parent="."]
+[node name="frente" type="Area2D" parent="." unique_id=549955269]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="frente"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="frente" unique_id=290421208]
 position = Vector2(48, 16)
 shape = SubResource("RectangleShape2D_p7k75")
 debug_color = Color(0.940373, 8.66354e-06, 0.615292, 0.42)
 
+[node name="AreaJOGADOR1" type="Area2D" parent="." unique_id=1965695897]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaJOGADOR1" unique_id=1639541396]
+shape = SubResource("CircleShape2D_114o1")
+debug_color = Color(0.728064, 0, 0.235, 0.42)
+
+[node name="TimerSegura" type="Timer" parent="." unique_id=743359243]
+wait_time = 4.0
+one_shot = true
+
+[node name="Nick_p1" type="Label" parent="." unique_id=884398818]
+offset_left = -80.0
+offset_top = -88.0
+offset_right = 80.0
+offset_bottom = -65.0
+theme_override_fonts/font = ExtResource("6_gn376")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1423788259]
+stream = ExtResource("7_p7k75")
+volume_db = 15.0
+pitch_scale = 0.9
+
 [connection signal="body_entered" from="frente" to="." method="_on_frente_body_entered"]
 [connection signal="body_exited" from="frente" to="." method="_on_frente_body_exited"]
+[connection signal="timeout" from="TimerSegura" to="." method="_on_timer_segura_timeout"]

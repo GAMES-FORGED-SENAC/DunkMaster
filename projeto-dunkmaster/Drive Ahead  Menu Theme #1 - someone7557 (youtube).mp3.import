@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b80jpd2112e3s"
+path="res://.godot/imported/Drive Ahead  Menu Theme #1 - someone7557 (youtube).mp3-a68b823bfbccfbde3f9b66c423970328.mp3str"
+
+[deps]
+
+source_file="res://Drive Ahead  Menu Theme #1 - someone7557 (youtube).mp3"
+dest_files=["res://.godot/imported/Drive Ahead  Menu Theme #1 - someone7557 (youtube).mp3-a68b823bfbccfbde3f9b66c423970328.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

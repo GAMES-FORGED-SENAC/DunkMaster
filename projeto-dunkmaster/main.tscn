@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjw3vf4d3lg1s"]
+[gd_scene format=3 uid="uid://cjw3vf4d3lg1s"]
 
 [ext_resource type="Script" uid="uid://cucpsqkicsg7h" path="res://pontos.gd" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cabjqxoe3txsn" path="res://personagem.tscn" id="1_ig7tw"]
@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://baobfb2enrxh4" path="res://base_cesta.tscn" id="10_efxa6"]
 [ext_resource type="PackedScene" uid="uid://d4lb8ysoafqml" path="res://nao_sei.tscn" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://832h5i011yok" path="res://personagem2.tscn" id="12_ycdy4"]
+[ext_resource type="AudioStream" uid="uid://d3vaotuefg5g5" path="res://basketball-game-65753.mp3" id="13_ycdy4"]
+[ext_resource type="AudioStream" uid="uid://ducca5nm3wr2m" path="res://map/basketball-backboard-83558.mp3" id="14_w48qg"]
+[ext_resource type="AudioStream" uid="uid://dwkr2stmi8sum" path="res://TORCIDA VITORIA.mp3" id="15_vivmo"]
+[ext_resource type="AudioStream" uid="uid://b80jpd2112e3s" path="res://Drive Ahead  Menu Theme #1 - someone7557 (youtube).mp3" id="16_2cqfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(1152, 104)
@@ -22,101 +26,101 @@ size = Vector2(75, 1190)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
 size = Vector2(1296, 48)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=613260250]
 script = ExtResource("1_4c57u")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=17982967]
 
-[node name="camada0" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="camada0" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2079632536]
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada0"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada0" unique_id=1182128048]
 position = Vector2(576, 240)
 scale = Vector2(18, 9.75)
 texture = ExtResource("1_lquwl")
 
-[node name="camada0_5" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="camada0_5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2015091617]
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada0_5"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada0_5" unique_id=1880884580]
 position = Vector2(832, 336)
 scale = Vector2(7.75, 10)
 texture = ExtResource("2_7mycd")
 
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/camada0_5"]
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/camada0_5" unique_id=1082858103]
 position = Vector2(248, 336)
 scale = Vector2(7.25, 10)
 texture = ExtResource("2_7mycd")
 
-[node name="camada1" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="camada1" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1897267841]
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada1"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada1" unique_id=1269102447]
 position = Vector2(420, 284)
 scale = Vector2(10.625, 9.875)
 texture = ExtResource("2_lquwl")
 
-[node name="camada3" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="camada3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1478969064]
 position = Vector2(-208, -8)
 scale = Vector2(0.99369, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada3"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada3" unique_id=381904130]
 position = Vector2(1032, 168)
 scale = Vector2(-13.2938, 9.875)
 texture = ExtResource("2_lquwl")
 
-[node name="camada2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="camada2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=719262685]
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada2"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada2" unique_id=1994380128]
 position = Vector2(576, 252)
 scale = Vector2(18, 7.875)
 texture = ExtResource("3_272bh")
 
-[node name="chao" type="StaticBody2D" parent="." groups=["chao"]]
+[node name="chao" type="StaticBody2D" parent="." unique_id=1218365422 groups=["chao"]]
 position = Vector2(0, 576)
 collision_layer = 7
 collision_mask = 7
 
-[node name="NewPiskel(3)" type="Sprite2D" parent="chao"]
+[node name="NewPiskel(3)" type="Sprite2D" parent="chao" unique_id=1329841793]
 position = Vector2(576, -272)
 scale = Vector2(16.9412, 10.1176)
 texture = ExtResource("2_0xm2m")
 
-[node name="chao" type="CollisionShape2D" parent="chao"]
+[node name="chao" type="CollisionShape2D" parent="chao" unique_id=864751231]
 position = Vector2(576, 20)
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=2139023131]
 
-[node name="player1" parent="Node2D" instance=ExtResource("1_ig7tw")]
-position = Vector2(216, 416)
+[node name="player2" parent="Node2D" unique_id=395281043 instance=ExtResource("12_ycdy4")]
+position = Vector2(880, 432)
 
-[node name="player2" parent="Node2D" instance=ExtResource("12_ycdy4")]
-position = Vector2(945, 405)
+[node name="player1" parent="Node2D" unique_id=1231538314 instance=ExtResource("1_ig7tw")]
+position = Vector2(160, 432)
 
-[node name="paredes" type="StaticBody2D" parent="." groups=["parede"]]
+[node name="paredes" type="StaticBody2D" parent="." unique_id=528784427 groups=["parede"]]
 position = Vector2(0, 576)
 collision_layer = 7
 collision_mask = 7
 
-[node name="parede" type="CollisionShape2D" parent="paredes"]
+[node name="parede" type="CollisionShape2D" parent="paredes" unique_id=2015282513]
 position = Vector2(-37.5, -405)
 shape = SubResource("RectangleShape2D_272bh")
 
-[node name="parede2" type="CollisionShape2D" parent="paredes"]
+[node name="parede2" type="CollisionShape2D" parent="paredes" unique_id=331276961]
 position = Vector2(1192, -407)
 shape = SubResource("RectangleShape2D_272bh")
 
-[node name="teto" type="CollisionShape2D" parent="paredes"]
+[node name="teto" type="CollisionShape2D" parent="paredes" unique_id=1589399240]
 position = Vector2(576, -1024)
 shape = SubResource("RectangleShape2D_5vw27")
 
-[node name="cesta1" parent="." instance=ExtResource("10_efxa6")]
+[node name="cesta1" parent="." unique_id=2101047853 instance=ExtResource("10_efxa6")]
 position = Vector2(1076, 220)
 
-[node name="cesta2" parent="." instance=ExtResource("10_efxa6")]
+[node name="cesta2" parent="." unique_id=997203574 instance=ExtResource("10_efxa6")]
 position = Vector2(76, 222)
 rotation = 3.14159
 scale = Vector2(1.2, -1.2)
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1324884376]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -126,7 +130,7 @@ offset_right = 704.0
 offset_bottom = 104.0
 grow_horizontal = 2
 
-[node name="pontos_j1" type="Label" parent="Panel"]
+[node name="pontos_j1" type="Label" parent="Panel" unique_id=1499386723]
 layout_mode = 0
 offset_left = 32.0
 offset_right = 74.0
@@ -136,7 +140,7 @@ theme_override_font_sizes/font_size = 70
 text = "0"
 horizontal_alignment = 1
 
-[node name="pontos_j2" type="Label" parent="Panel"]
+[node name="pontos_j2" type="Label" parent="Panel" unique_id=1200968038]
 layout_mode = 0
 offset_left = 184.0
 offset_right = 226.0
@@ -146,7 +150,7 @@ theme_override_font_sizes/font_size = 70
 text = "0"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Panel" unique_id=294113843]
 layout_mode = 0
 offset_left = 112.0
 offset_top = -16.0
@@ -155,7 +159,7 @@ offset_bottom = 75.0
 theme_override_font_sizes/font_size = 66
 text = "|"
 
-[node name="Panel" type="Panel" parent="Panel"]
+[node name="Panel" type="Panel" parent="Panel" unique_id=2056896464]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -169,12 +173,12 @@ offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Timer" type="Timer" parent="Panel/Panel"]
+[node name="Timer" type="Timer" parent="Panel/Panel" unique_id=1813172152]
 wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="LabelCronometro" type="Label" parent="Panel/Panel"]
+[node name="LabelCronometro" type="Label" parent="Panel/Panel" unique_id=2108680432]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -191,7 +195,8 @@ theme_override_fonts/font = ExtResource("8_5vw27")
 theme_override_font_sizes/font_size = 37
 text = "00.0"
 
-[node name="Mensagens" type="Label" parent="Panel"]
+[node name="Mensagemfinal" type="Label" parent="Panel" unique_id=493558939]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -208,11 +213,61 @@ theme_override_fonts/font = ExtResource("8_5vw27")
 theme_override_font_sizes/font_size = 60
 text = "O jogador 1 ganhou!"
 
-[node name="TimerPontoEFinal" type="Timer" parent="Panel/Mensagens"]
-wait_time = 3.0
+[node name="TimerPontoEFinal" type="Timer" parent="Panel/Mensagemfinal" unique_id=843781594]
+wait_time = 2.0
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("7_272bh")]
-position = Vector2(416, 408)
-
-[node name="CanvasLayer" parent="." instance=ExtResource("12_dg77c")]
+[node name="mensagemponto" type="Label" parent="Panel" unique_id=1483681964]
 visible = false
+layout_mode = 0
+offset_left = -16.0
+offset_top = 200.0
+offset_right = 266.0
+offset_bottom = 254.0
+theme_override_fonts/font = ExtResource("8_5vw27")
+theme_override_font_sizes/font_size = 60
+text = "2 points!"
+
+[node name="CharacterBody2D2" parent="." unique_id=1719703886 instance=ExtResource("7_272bh")]
+position = Vector2(568, 368)
+
+[node name="CanvasLayer" parent="." unique_id=725522931 instance=ExtResource("12_dg77c")]
+visible = false
+
+[node name="Basketball-game-65753" type="AudioStreamPlayer" parent="." unique_id=1819931439]
+stream = ExtResource("13_ycdy4")
+volume_db = -20.775
+autoplay = true
+parameters/looping = true
+
+[node name="Basketball-backboard-83558" type="AudioStreamPlayer" parent="." unique_id=890526696]
+stream = ExtResource("14_w48qg")
+pitch_scale = 0.94
+
+[node name="TorcidaVitoria" type="AudioStreamPlayer" parent="." unique_id=1956823116]
+stream = ExtResource("15_vivmo")
+volume_db = -2.0
+pitch_scale = 1.5
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=890355726]
+visible = false
+
+[node name="SetaP1" type="Label" parent="Node2D2" unique_id=518051802]
+offset_left = 48.0
+offset_top = 16.0
+offset_right = 208.0
+offset_bottom = 39.0
+
+[node name="SetaP2" type="Label" parent="Node2D2" unique_id=882731987]
+offset_left = 944.0
+offset_top = 16.0
+offset_right = 1096.0
+offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("8_5vw27")
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=403133020]
+stream = ExtResource("16_2cqfq")
+volume_db = -5.0
+pitch_scale = 1.1
+autoplay = true
+parameters/looping = true
