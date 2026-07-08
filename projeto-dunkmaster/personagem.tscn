@@ -211,7 +211,7 @@ radius = 29.0
 height = 132.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7k75"]
-size = Vector2(48, 96)
+size = Vector2(64, 104)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_114o1"]
 radius = 24.0
@@ -233,7 +233,7 @@ shape = SubResource("CapsuleShape2D_114o1")
 [node name="frente" type="Area2D" parent="." unique_id=549955269]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="frente" unique_id=290421208]
-position = Vector2(48, 16)
+position = Vector2(56, 12)
 shape = SubResource("RectangleShape2D_p7k75")
 debug_color = Color(0.940373, 8.66354e-06, 0.615292, 0.42)
 
@@ -242,10 +242,6 @@ debug_color = Color(0.940373, 8.66354e-06, 0.615292, 0.42)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaJOGADOR1" unique_id=1639541396]
 shape = SubResource("CircleShape2D_114o1")
 debug_color = Color(0.728064, 0, 0.235, 0.42)
-
-[node name="TimerSegura" type="Timer" parent="." unique_id=743359243]
-wait_time = 4.0
-one_shot = true
 
 [node name="Nick_p1" type="Label" parent="." unique_id=884398818]
 offset_left = -80.0
@@ -261,6 +257,12 @@ stream = ExtResource("7_p7k75")
 volume_db = 15.0
 pitch_scale = 0.9
 
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1166555080]
+offset_left = -63.86088
+offset_right = 0.13418579
+offset_bottom = 15.663044
+rotation = -1.5707964
+show_percentage = false
+
 [connection signal="body_entered" from="frente" to="." method="_on_frente_body_entered"]
 [connection signal="body_exited" from="frente" to="." method="_on_frente_body_exited"]
-[connection signal="timeout" from="TimerSegura" to="." method="_on_timer_segura_timeout"]

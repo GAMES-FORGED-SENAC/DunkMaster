@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://defj6k4q4jbeo"]
+[gd_scene format=3 uid="uid://defj6k4q4jbeo"]
 
 [ext_resource type="FontFile" uid="uid://l16qg3wpjgw1" path="res://map/upheavtt.ttf" id="1_lti8b"]
 [ext_resource type="Script" uid="uid://dibjhv7bxximq" path="res://menu.gd" id="1_ouk20"]
@@ -14,10 +14,10 @@ bg_color = Color(0.655816, 0.0583821, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hy44"]
 size = Vector2(1186, 106)
 
-[node name="menu" type="Node2D"]
+[node name="menu" type="Node2D" unique_id=525276943]
 script = ExtResource("1_ouk20")
 
-[node name="Sprite2D" type="TextureRect" parent="."]
+[node name="Sprite2D" type="TextureRect" parent="." unique_id=225183709]
 offset_left = -176.0
 offset_top = -112.0
 offset_right = 2075.0
@@ -25,7 +25,7 @@ offset_bottom = 1049.0
 scale = Vector2(0.75, 0.703125)
 texture = ExtResource("2_4hy44")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2064716481]
 modulate = Color(0.648969, 0.219718, 0, 1)
 offset_left = 16.0
 offset_top = 32.0
@@ -33,7 +33,7 @@ offset_right = 416.0
 offset_bottom = 325.0
 theme_override_constants/separation = 16
 
-[node name="titulo" type="Label" parent="VBoxContainer"]
+[node name="titulo" type="Label" parent="VBoxContainer" unique_id=105956465]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0.0666667, 0.419608, 1)
 theme_override_fonts/font = ExtResource("1_lti8b")
@@ -42,54 +42,54 @@ text = "dunk master"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="start" type="Button" parent="VBoxContainer"]
+[node name="start" type="Button" parent="VBoxContainer" unique_id=1126340909]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_mae5d")
 text = "start"
 
-[node name="options" type="Button" parent="VBoxContainer"]
+[node name="options" type="Button" parent="VBoxContainer" unique_id=1271901551]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 40
 text = "HOW to play"
 
-[node name="credits" type="Button" parent="VBoxContainer"]
+[node name="credits" type="Button" parent="VBoxContainer" unique_id=1949777741]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 40
 text = "credits"
 
-[node name="quit" type="Button" parent="VBoxContainer"]
+[node name="quit" type="Button" parent="VBoxContainer" unique_id=75035305]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 40
 text = "quit"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["chao"]]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=42841881 groups=["chao"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=357511387]
 position = Vector2(792, 560)
 shape = SubResource("RectangleShape2D_4hy44")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("5_ytr4m")]
+[node name="CharacterBody2D" parent="." unique_id=1478274315 instance=ExtResource("5_ytr4m")]
 position = Vector2(880, 400)
 scale = Vector2(5, 5)
 
-[node name="RigidBody2D" parent="." instance=ExtResource("4_4hy44")]
+[node name="RigidBody2D" parent="." unique_id=1310777729 instance=ExtResource("4_4hy44")]
 position = Vector2(808, 408)
 
-[node name="EncontradaMúsicaDoOnibusTodoMundoOdeiaOChris__[kqwNp98v0Gc]" type="AudioStreamPlayer2D" parent="."]
+[node name="EncontradaMúsicaDoOnibusTodoMundoOdeiaOChris__[kqwNp98v0Gc]" type="AudioStreamPlayer2D" parent="." unique_id=1920902777]
 position = Vector2(560, 544)
 stream = ExtResource("6_l48gv")
 autoplay = true
 parameters/looping = false
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=628264136]
 position = Vector2(-264, 0)
 
-[node name="choice_nick" type="Label" parent="Node2D"]
+[node name="choice_nick" type="Label" parent="Node2D" unique_id=740457896]
 offset_left = 1136.0
 offset_right = 1318.0
 offset_bottom = 29.0
@@ -99,7 +99,7 @@ theme_override_fonts/font = ExtResource("7_ecwwl")
 theme_override_font_sizes/font_size = 32
 text = "Nicknames:"
 
-[node name="LabelP1" type="Label" parent="Node2D"]
+[node name="LabelP1" type="Label" parent="Node2D" unique_id=1798518713]
 offset_left = 1096.0
 offset_top = 40.0
 offset_right = 1211.0
@@ -109,7 +109,7 @@ theme_override_fonts/font = ExtResource("7_ecwwl")
 theme_override_font_sizes/font_size = 24
 text = "Player 1 :"
 
-[node name="LabelP2" type="Label" parent="Node2D"]
+[node name="LabelP2" type="Label" parent="Node2D" unique_id=268378163]
 offset_left = 1088.0
 offset_top = 80.0
 offset_right = 1212.0
@@ -119,7 +119,7 @@ theme_override_fonts/font = ExtResource("7_ecwwl")
 theme_override_font_sizes/font_size = 24
 text = "Player 2 :"
 
-[node name="TextEdit1" type="LineEdit" parent="Node2D"]
+[node name="TextEdit1" type="LineEdit" parent="Node2D" unique_id=902292569]
 offset_left = 1216.0
 offset_top = 40.0
 offset_right = 1408.0
@@ -128,7 +128,7 @@ theme_override_fonts/font = ExtResource("7_ecwwl")
 placeholder_text = "Insira seu nome"
 max_length = 12
 
-[node name="TextEdit2" type="LineEdit" parent="Node2D"]
+[node name="TextEdit2" type="LineEdit" parent="Node2D" unique_id=2098607430]
 offset_left = 1216.0
 offset_top = 80.0
 offset_right = 1408.0

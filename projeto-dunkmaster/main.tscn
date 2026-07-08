@@ -34,8 +34,8 @@ script = ExtResource("1_4c57u")
 [node name="camada0" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2079632536]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/camada0" unique_id=1182128048]
-position = Vector2(576, 240)
-scale = Vector2(18, 9.75)
+position = Vector2(578.49994, 224)
+scale = Vector2(20.421875, 10.25)
 texture = ExtResource("1_lquwl")
 
 [node name="camada0_5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2015091617]
@@ -174,7 +174,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Timer" type="Timer" parent="Panel/Panel" unique_id=1813172152]
-wait_time = 60.0
+wait_time = 90.0
 one_shot = true
 autostart = true
 
