@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bn1vuhlw24e6s" path="res://bola_menu.tscn" id="4_4hy44"]
 [ext_resource type="PackedScene" uid="uid://choyq0tqrcyii" path="res://personagem_menu.tscn" id="5_ytr4m"]
 [ext_resource type="AudioStream" uid="uid://d3bhp5vlj0xkx" path="res://ENCONTRADA Música do Onibus Todo mundo odeia o Chris.. [KqwNp98v0gc].mp3" id="6_l48gv"]
-[ext_resource type="FontFile" uid="uid://bejay4b5kdhbq" path="res://upheavtt.ttf" id="7_ecwwl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mae5d"]
 bg_color = Color(0.655816, 0.0583821, 0, 1)
@@ -85,57 +84,6 @@ position = Vector2(560, 544)
 stream = ExtResource("6_l48gv")
 autoplay = true
 parameters/looping = false
-
-[node name="Node2D" type="Node2D" parent="." unique_id=628264136]
-position = Vector2(-264, 0)
-
-[node name="choice_nick" type="Label" parent="Node2D" unique_id=740457896]
-offset_left = 1136.0
-offset_right = 1318.0
-offset_bottom = 29.0
-theme_override_colors/font_color = Color(0.647059, 0.219608, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.0666667, 0.419608, 1)
-theme_override_fonts/font = ExtResource("7_ecwwl")
-theme_override_font_sizes/font_size = 32
-text = "Nicknames:"
-
-[node name="LabelP1" type="Label" parent="Node2D" unique_id=1798518713]
-offset_left = 1096.0
-offset_top = 40.0
-offset_right = 1211.0
-offset_bottom = 63.0
-theme_override_colors/font_shadow_color = Color(0.647059, 0.219608, 0, 1)
-theme_override_fonts/font = ExtResource("7_ecwwl")
-theme_override_font_sizes/font_size = 24
-text = "Player 1 :"
-
-[node name="LabelP2" type="Label" parent="Node2D" unique_id=268378163]
-offset_left = 1088.0
-offset_top = 80.0
-offset_right = 1212.0
-offset_bottom = 103.0
-theme_override_colors/font_shadow_color = Color(0.647059, 0.219608, 0, 1)
-theme_override_fonts/font = ExtResource("7_ecwwl")
-theme_override_font_sizes/font_size = 24
-text = "Player 2 :"
-
-[node name="TextEdit1" type="LineEdit" parent="Node2D" unique_id=902292569]
-offset_left = 1216.0
-offset_top = 40.0
-offset_right = 1408.0
-offset_bottom = 71.0
-theme_override_fonts/font = ExtResource("7_ecwwl")
-placeholder_text = "Insira seu nome"
-max_length = 12
-
-[node name="TextEdit2" type="LineEdit" parent="Node2D" unique_id=2098607430]
-offset_left = 1216.0
-offset_top = 80.0
-offset_right = 1408.0
-offset_bottom = 111.0
-theme_override_fonts/font = ExtResource("7_ecwwl")
-placeholder_text = "Insira seu nome"
-max_length = 12
 
 [connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options1_pressed"]

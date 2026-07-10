@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://baobfb2enrxh4"]
+[gd_scene format=3 uid="uid://baobfb2enrxh4"]
 
 [ext_resource type="Texture2D" uid="uid://dsvh1iafesbb2" path="res://map/New Piskel-1.png (1).png" id="1_ch2ip"]
 [ext_resource type="PackedScene" uid="uid://cvotf01nrp1wf" path="res://cesta.tscn" id="2_gtvee"]
@@ -6,17 +6,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtvee"]
 size = Vector2(13.3333, 96)
 
-[node name="base_cesta" type="StaticBody2D"]
+[node name="base_cesta" type="StaticBody2D" unique_id=58163509]
 scale = Vector2(1.2, 1.2)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1958265536]
 scale = Vector2(8, 8)
 texture = ExtResource("1_ch2ip")
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2057039498]
 position = Vector2(6.667, 8)
 shape = SubResource("RectangleShape2D_gtvee")
 
-[node name="cesta" parent="." instance=ExtResource("2_gtvee")]
-position = Vector2(-40, 20)
+[node name="cesta" parent="." unique_id=1011042489 instance=ExtResource("2_gtvee")]
+position = Vector2(-37.5, 20)
