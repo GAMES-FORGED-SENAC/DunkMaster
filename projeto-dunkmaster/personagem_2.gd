@@ -8,6 +8,7 @@ extends CharacterBody2D
 # AJUSTE APENAS O CAMINHO DA SUA BARRA
 @onready var power_bar = $ProgressBar
 
+
 # === CONSTANTES ===
 var SPEED = 300.0
 var JUMP_VELOCITY = -555
@@ -31,6 +32,7 @@ func _ready() -> void:
 	
 # === PROCESSO PRINCIPAL ===
 func _physics_process(delta: float) -> void:
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 1.5
 
@@ -88,12 +90,7 @@ func atualizar_barra(delta):
 		if forca_barra >= 100:
 			forca_barra = 100
 			aumentando = false
-	else:
-		forca_barra -= VELOCIDADE_BARRA * delta
 
-		if forca_barra <= 0:
-			forca_barra = 0
-			aumentando = true
 
 	power_bar.value = forca_barra
 

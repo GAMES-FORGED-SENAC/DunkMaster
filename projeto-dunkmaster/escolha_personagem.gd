@@ -1,4 +1,9 @@
 extends Node2D
+
+func _ready() -> void:
+	$PanelP1/TextEdit1.text = str(Global.GLOBALjogador_1)
+	$PanelP2/TextEdit2.text = str(Global.GLOBALjogador2)
+
 func _process(delta: float) -> void:
 	Global.GLOBALjogador_1 = $PanelP1/TextEdit1.text
 	Global.GLOBALjogador2 = $PanelP2/TextEdit2.text

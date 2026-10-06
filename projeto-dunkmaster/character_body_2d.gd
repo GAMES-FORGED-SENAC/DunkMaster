@@ -11,6 +11,7 @@ extends CharacterBody2D
 # === CONSTANTES ===
 var SPEED = 300.0
 var JUMP_VELOCITY = -555
+var controle_id
 
 # === VARIÁVEIS ===
 var is_jumping = false
@@ -45,6 +46,9 @@ func _physics_process(delta: float) -> void:
 
 	acao_bola()
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventJoypadButton or InputEventJoypadMotion:
+		controle_id = event.device
 
 # === MOVIMENTAÇÃO ===
 func movimentar_vertical():
@@ -52,9 +56,10 @@ func movimentar_vertical():
 		is_jumping = false
 
 	if Input.is_action_just_pressed("pulaP1") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		is_jumping = true
-		animacoes.play("jump")
+		if controle_id == 0:
+			velocity.y = JUMP_VELOCITY
+			is_jumping = true
+			animacoes.play("jump")
 
 
 func movimentar_horizontal():
@@ -88,12 +93,6 @@ func atualizar_barra(delta):
 		if forca_barra >= 100:
 			forca_barra = 100
 			aumentando = false
-	else:
-		forca_barra -= VELOCIDADE_BARRA * delta
-
-		if forca_barra <= 0:
-			forca_barra = 0
-			aumentando = true
 
 	power_bar.value = forca_barra
 
